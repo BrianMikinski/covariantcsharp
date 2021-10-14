@@ -3,9 +3,11 @@
 var hondaCrv = new Suv(new FourSpeed());
 hondaCrv.GoForward();
 
+var hondaRidgeLine = new Truck(new SixSpeed());
+hondaRidgeLine.GoForward();
+
 public class Vehicle<T> where T : GearBox
 {
-
     /// <summary>
     /// This is necessary because C# 10 was not able to include "required" parameters.
     /// Required properites were unfortunately not added to C# 10. See https://github.com/dotnet/csharplang/issues/3630
@@ -31,10 +33,7 @@ public class Vehicle<T> where T : GearBox
 
 public class Suv : Vehicle<FourSpeed>
 {
-    public Suv(FourSpeed transmission) : base(transmission)
-    {
-
-    }
+    public Suv(FourSpeed transmission) : base(transmission) { }
 
     public override FourSpeed GoForward()
     {
@@ -46,10 +45,7 @@ public class Suv : Vehicle<FourSpeed>
 
 public class Truck : Vehicle<SixSpeed>
 {
-    public Truck(SixSpeed transmission) : base(transmission)
-    {
-
-    }
+    public Truck(SixSpeed transmission) : base(transmission) { }
 
     public override SixSpeed GoForward()
     {
@@ -61,13 +57,11 @@ public class Truck : Vehicle<SixSpeed>
 
 public abstract class GearBox
 {
-
     public abstract void Engage();
 }
 
 public class FourSpeed : GearBox
 {
-
     public override void Engage()
     {
         Console.WriteLine("4 Speed Engaged");
@@ -75,7 +69,7 @@ public class FourSpeed : GearBox
 
     public void DisengageClutch()
     {
-        Console.WriteLine("Disengaging 4 speed clutch.");
+        Console.WriteLine("Disengaging 4 Speed Clutch.");
     }
 }
 
@@ -84,7 +78,6 @@ public class FourSpeed : GearBox
 /// </summary>
 public interface IGearBox
 {
-
     void ShiftGear();
 }
 
@@ -97,7 +90,7 @@ public class SixSpeed : FourSpeed
 
     public void Enable4WheelDrive()
     {
-        Console.WriteLine("6 Speed Engaged");
+        Console.WriteLine("Enabling 4 Wheel Drive");
     }
 }
 
